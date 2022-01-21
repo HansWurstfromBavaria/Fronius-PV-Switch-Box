@@ -8,7 +8,8 @@ The sun comes out and shines on the cells. Part of the Energy is used by myself 
 My Inverter is a Fronius Symo 10.0-3-M and it supports the readout of Data over Ethernet or WLAN. As far as I know all of the Fronius Symo Inverters (and especially the Gen24 devices) support this.
 How this works? A CGI-Script on the Inverter receives enquiries via the standard http protocol and answers them with a JSON file output.
 For details search for "Fronius Solar API" in Google.
-To test it, just use your browser and try: http://<<<IP-ADDRESS OF INVERTER>>>/solar_api/v1/GetMeterRealtimeData.cgi?Scope=System
+To test it, just use your browser and try: 
+http://[IP-ADDRESS OF INVERTER]/solar_api/v1/GetMeterRealtimeData.cgi?Scope=System
 
 So in my case I need to type in: http://192.168.2.151/solar_api/v1/GetMeterRealtimeData.cgi?Scope=System
 You should get a JSON-File displayed on your browser, showing some current values of your Inverter.
