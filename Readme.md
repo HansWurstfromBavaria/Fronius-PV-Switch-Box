@@ -9,6 +9,7 @@ My Inverter is a Fronius Symo 10.0-3-M and it supports the readout of Data over 
 How this works? A CGI-Script on the Inverter receives enquiries via the standard http protocol and answers them with a JSON file output.
 For details search for "Fronius Solar API" in Google.
 To test it, just use your browser and try: http://<<<IP-ADDRESS OF INVERTER>>>/solar_api/v1/GetMeterRealtimeData.cgi?Scope=System
+
 So in my case I need to type in: http://192.168.2.151/solar_api/v1/GetMeterRealtimeData.cgi?Scope=System
 You should get a JSON-File displayed on your browser, showing some current values of your Inverter.
 
@@ -29,6 +30,7 @@ Rough Material List for this Project:
 What does the display show? (Sorry for the German)
 - Outer Pie Chart: The current PV Sytem Power in relation to the maximum possible Power.
 - Inner Pie Chart: The currently self used amount of power and the "unused" amount delivered to the grid.
+
 Right side:
 - The 3 core values
 - The switch on Threshold
@@ -39,13 +41,13 @@ Note: The switch on threshold defines which amount of PV system power must be av
 for the relais (gpio) to switch on. The switch off threshold is fixed to a value of 200W - drawn from the grid. This means that, if for any reason, more than 200W are drawn from the grid the switch is set to an off state.
 
 Some more details:
-- The Raspberry Pi is running on Raspberry Pi Os.
+- The Raspberry Pi is running on Raspberry Pi OS.
 - The Python Script starts automatically after boot. This solution (with increased waiting times) worked out: [RaspPi Autostart](https://forums.raspberrypi.com/viewtopic.php?t=236186 "RaspPi Autostart")
 - The Touch Screen function was flipped at the beginning. There are several suggestions
 how to fix this, however the configuration that finally worked for me was inserting
 a Transformation Matrix to /etc/X11/xorg.conf.d/99-calibration.conf => 0 -1 1 -1 0 1 0 0 1
 - I used a reverse Diode attached to Relais coil 
-- The output of the RaspPi GPIO is connected to NPN-Transistor via a Resistor. Additionally there is a pull down built in. This transistor switches the relais coil.
+- The output of the RaspPi GPIO is connected to a NPN-Transistor via a Resistor. Additionally there is a pull down built in. This transistor switches the relais coil.
 
 Pictures:
 ![Pic1](https://github.com/HansWurstfromBavaria/Photovoltaic-Switch/blob/main/Pictures/1.JPG?raw=true)
